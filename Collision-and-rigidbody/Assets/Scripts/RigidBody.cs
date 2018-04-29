@@ -103,7 +103,7 @@ public class RigidBody : MonoBehaviour {
 
     private void FixedUpdate()
     {
-
+        ns_position = transform.position;
         //SetVariables(); //update to next time data , not initialising 
 
         //ComputeForces(); //calculate the force 
