@@ -5,3 +5,6 @@ The physics simulation code is found in ```Collider2.cs``` file.
 
 ## Matrix Code
 As Matrix3x3 is required for this code, the class for Matrix3x3 is found in ```Matrix3x3.cs```. The code is adapted and modified from MIT's vecmath class Matrixf.cpp.
+
+# Contributors
+Me, [@nalasark](https://github.com/nalasark),[@pappar1027](https://github.com/pappar1027)
