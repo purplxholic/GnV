@@ -183,7 +183,7 @@ namespace GK{
             Vector3 wai = grb.m_AngularVelocity;
             Vector3 wbi = trb.angularVelocity;
 
-            Vector3 ita = grb.GetInertiaTensor(); 
+            Vector3 ita = grb.GetInertiaTensor();
 
 
             Matrix3f IaInverse = grb.WorldInertiaInverseTensor;
@@ -196,7 +196,7 @@ namespace GK{
             Vector3 rb = v - trb.worldCenterOfMass;
 
             Vector3 normal = n.normalized;
-            Vector3 angularVelChangea = Vector3.Cross(normal,ra); // start calculating the change in angular rotation of a
+            Vector3 angularVelChangea = Vector3.Cross(normal, ra); // start calculating the change in angular rotation of a
             Vector3 vaLinDueToR = Vector3.Cross(IaInverse * angularVelChangea, ra);  // calculate the linear velocity of collision point on a due to rotation of a
             Vector3 angularVelChangeb = Vector3.Cross(normal, rb);
             Vector3 vbLinDueToR = Vector3.Cross(IbInverse * angularVelChangeb, rb);
@@ -208,11 +208,51 @@ namespace GK{
             Vector3 J = normal * Jmod;
             Vector3 vaf = vai - J * grb.inv_mass;
             grb.m_linearVelocity = vaf;
-            trb.velocity = - vbi + J * (1 / mb);
+            trb.velocity = -vbi + J * (1 / mb);
             Vector3 deltawa = IaInverse * Vector3.Cross(J, ra);
             Vector3 deltawb = IbInverse * Vector3.Cross(J, rb);
             grb.m_AngularVelocity = wai - deltawa;
-            trb.angularVelocity =  wbi - deltawb;
+            trb.angularVelocity = wbi - deltawb;
+
+            //float ma = grb.Mass;
+            //float mb = trb.Mass;
+
+            //Vector3 vai = grb.m_linearVelocity;
+            //Vector3 vbi = trb.m_linearVelocity;
+
+            //Vector3 wai = grb.m_AngularVelocity;
+            //Vector3 wbi = trb.m_AngularVelocity;
+
+            //Vector3 ita = grb.GetInertiaTensor();
+
+
+            //Matrix3f IaInverse = grb.WorldInertiaInverseTensor;
+            ////need to change, this is point of impact
+            //Vector3 ra = (v - grb.ns_position);
+
+            ////Vector3 itb = trb.World;
+            ////Matrix3f Ib = new Matrix3f(itb);
+            //Matrix3f IbInverse = trb.WorldInertiaInverseTensor;
+            //Vector3 rb = v - trb.ns_position;
+
+            //Vector3 normal = n.normalized;
+            //Vector3 angularVelChangea = Vector3.Cross(normal, ra); // start calculating the change in angular rotation of a
+            //Vector3 vaLinDueToR = Vector3.Cross(IaInverse * angularVelChangea, ra);  // calculate the linear velocity of collision point on a due to rotation of a
+            //Vector3 angularVelChangeb = Vector3.Cross(normal, rb);
+            //Vector3 vbLinDueToR = Vector3.Cross(IbInverse * angularVelChangeb, rb);
+            //// calculate the linear velocity of collision point on a due to rotation of a
+            //float scalar = 1 / ma + 1 / mb + Vector3.Dot(vaLinDueToR, normal) + Vector3.Dot(vbLinDueToR, normal);
+
+
+            //float Jmod = -(e + 1) * (vai).magnitude / scalar;
+            //Vector3 J = normal * Jmod;
+            //Vector3 vaf = vai - J * grb.inv_mass;
+            //grb.m_linearVelocity = vaf;
+            //trb.m_linearVelocity = -vbi + J * (1 / mb);
+            //Vector3 deltawa = IaInverse * Vector3.Cross(J, ra);
+            //Vector3 deltawb = IbInverse * Vector3.Cross(J, rb);
+            //grb.m_AngularVelocity = wai - deltawa;
+            //trb.m_AngularVelocity = wbi - deltawb;
 
         }
         //do pairwise boundary checking or use octree to check through the whole scene(octree for 
