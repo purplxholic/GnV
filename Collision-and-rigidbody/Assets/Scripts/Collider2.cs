@@ -195,7 +195,7 @@ namespace GK{
             Matrix3f IbInverse = Ib.inverse();
             Vector3 rb = v - trb.worldCenterOfMass;
 
-            Vector3 normal = n.normalized;
+            Vector3 normal = - n.normalized;
             Vector3 angularVelChangea = Vector3.Cross(normal, ra); // start calculating the change in angular rotation of a
             Vector3 vaLinDueToR = Vector3.Cross(IaInverse * angularVelChangea, ra);  // calculate the linear velocity of collision point on a due to rotation of a
             Vector3 angularVelChangeb = Vector3.Cross(normal, rb);
